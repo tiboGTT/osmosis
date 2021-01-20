@@ -53,7 +53,7 @@ public class TransformLoader {
 		Matcher matcher = null;
 		Matcher finder = null;
 		List<Output> output = new ArrayList<>();
-	Map<String, DataSource> dataSources = Collections.emptyMap();
+		Map<String, DataSource> dataSources = Collections.emptyMap();
 
 		NodeList children = element.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
@@ -162,6 +162,9 @@ public class TransformLoader {
 			String k = matcher.getAttribute("k");
 			String v = matcher.getAttribute("v");
 			return new NoTagMatcher(k, v);
+		} else if (name.equals("waytag")) {
+			Long id = Long.parseLong(matcher.getAttribute("id"));
+			return new WayTagMatcher(id);
 		}
 		return null;
 	}

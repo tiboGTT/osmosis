@@ -18,6 +18,10 @@ public class MatchResultMatch implements Match {
 		this.keyRes = keyRes;
 		this.valueRes = valueRes;
 	}
+	public MatchResultMatch( MatchResult keyRes, MatchResult valueRes) {
+		this.keyRes = keyRes;
+		this.valueRes = valueRes;
+	}
 
 
 	@Override

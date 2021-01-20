@@ -29,7 +29,7 @@ public class OrMatcher implements Matcher {
 
 
 	@Override
-	public Collection<Match> match(Map<String, String> tags, TTEntityType entityType, String entityUname,
+	public Collection<Match> match(Long id, Map<String, String> tags, TTEntityType entityType, String entityUname,
 			int entityUid) {
 		if (this.type != null && this.type != entityType) {
 			return null;
@@ -43,7 +43,7 @@ public class OrMatcher implements Matcher {
 
 		List<Match> allMatches = new ArrayList<Match>();
 		for (Matcher matcher : matchers) {
-			Collection<Match> matches = matcher.match(tags, entityType, entityUname, entityUid);
+			Collection<Match> matches = matcher.match(id, tags, entityType, entityUname, entityUid);
 			if (matches != null) {
 				allMatches.addAll(matches);
 			}

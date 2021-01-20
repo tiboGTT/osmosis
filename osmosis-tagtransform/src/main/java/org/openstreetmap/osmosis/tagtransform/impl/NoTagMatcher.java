@@ -26,7 +26,7 @@ public class NoTagMatcher implements Matcher {
 
 
 	@Override
-	public Collection<Match> match(Map<String, String> tags, TTEntityType type, String uname, int uid) {
+	public Collection<Match> match(Long id, Map<String, String> tags, TTEntityType type, String uname, int uid) {
 		// loop through the tags to find matches
 		for (Entry<String, String> tag : tags.entrySet()) {
 			java.util.regex.Matcher keyMatch = keyPattern.matcher(tag.getKey());

@@ -28,7 +28,7 @@ public class TranslationImpl implements Translation {
 		this.description = description;
 		this.matcher = matcher;
 		this.finder = finder;
-                this.dataSources = dataSources;
+		this.dataSources = dataSources;
 		this.output = output;
 	}
 
@@ -50,14 +50,14 @@ public class TranslationImpl implements Translation {
 
 
 	@Override
-	public Collection<Match> match(Map<String, String> tags, TTEntityType type, String uname, int uid) {
-		Collection<Match> matches = matcher.match(tags, type, uname, uid);
+	public Collection<Match> match(Long id, Map<String, String> tags, TTEntityType type, String uname, int uid) {
+		Collection<Match> matches = matcher.match(id, tags, type, uname, uid);
 		if (matches != null && !matches.isEmpty()) {
 			Collection<Match> finds;
 			if (finder == null) {
 				finds = null;
 			} else {
-				finds = finder.match(tags, type, uname, uid);
+				finds = finder.match(id, tags, type, uname, uid);
 			}
 			if (finds != null && !finds.isEmpty()) {
 				if (matches instanceof ArrayList) {
@@ -69,7 +69,6 @@ public class TranslationImpl implements Translation {
 					return allMatches;
 				}
 			}
-
 			return matches;
 		}
 

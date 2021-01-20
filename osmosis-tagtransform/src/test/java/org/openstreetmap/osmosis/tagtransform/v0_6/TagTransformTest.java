@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Scanner;
 
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.Osmosis;
@@ -50,6 +51,13 @@ public class TagTransformTest extends AbstractDataTest {
 				actualOutputFile.getPath()
 			}
 		);
+
+		Scanner input = new Scanner(actualOutputFile);
+
+		while (input.hasNextLine())
+		{
+			System.out.println(input.nextLine());
+		}
 
 		// Validate that the output file matches the expected result.
 		dataUtils.compareFiles(expectedOutputFile, actualOutputFile);
